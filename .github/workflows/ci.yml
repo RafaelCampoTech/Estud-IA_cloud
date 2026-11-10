@@ -13,3 +13,8 @@ jobs:
     uses: ./.github/workflows/python_build.yml
     with:
       working-directory: semana-01/projecto_1/simple_fastapi
+
+  sonarqube:
+    uses: ./.github/workflows/sonar.yml
+    secrets:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
