@@ -1,0 +1,15 @@
+name: CI
+
+on:
+  pull_request:
+
+jobs:
+  vulnerability-scan:
+    uses: ./.github/workflows/python_vulnerability_scan.yml
+    with:
+      working-directory: semana-01/projecto_1/simple_fastapi
+
+  python-build:
+    uses: ./.github/workflows/python_build.yml
+    with:
+      working-directory: semana-01/projecto_1/simple_fastapi
