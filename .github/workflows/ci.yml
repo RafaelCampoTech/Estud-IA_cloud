@@ -4,17 +4,25 @@ on:
   pull_request:
 
 jobs:
+  dummy:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "dummy step"
+
   vulnerability-scan:
+    needs: dummy
     uses: ./.github/workflows/python_vulnerability_scan.yml
     with:
       working-directory: semana-01/projecto_1/simple_fastapi
 
   python-build:
+    needs: dummy
     uses: ./.github/workflows/python_build.yml
     with:
       working-directory: semana-01/projecto_1/simple_fastapi
 
   sonarqube:
+    needs: dummy
     uses: ./.github/workflows/sonar.yml
     secrets:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
