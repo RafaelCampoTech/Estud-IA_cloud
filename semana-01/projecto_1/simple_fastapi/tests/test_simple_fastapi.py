@@ -31,6 +31,12 @@ def test_read_dummy_default():
     assert response.json() == {"a": "Dummy", "message": "Hello from dummy_function!"}
 
 
+def test_read_dummy_with_query():
+    response = client.get("/dummy", params={"a": "other"})
+    assert response.status_code == 200
+    assert response.json() == {"a": "other", "message": "Hello from dummy_function!"}
+
+
 def test_dummy_function_default_returns_greeting():
     assert dummy_function() == "Hello from dummy_function!"
 
